@@ -1,0 +1,25 @@
+/* 重写第三方样式*/
+.el-header {
+  padding: 0;
+}
+/* 解决侧边栏溢出1px */
+aside {
+  min-width: 201px !important;
+  overflow: hidden !important;
+}
+/* 调整侧边抽屉padding */
+.el-drawer__body {
+  padding: 0 20px;
+}
+.el-container {
+  height: 100vh;
+}
+/* 调整图片预览适配页面 */
+.el-image-viewer__img > .el-image__inner {
+  max-height: 100vh;
+  object-fit: contain;
+}
+/* 调整侧边导航栏 */
+.el-submenu__title {
+  padding-right: 40px;
+}

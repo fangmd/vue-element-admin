@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Store from '@/store'
+import { isLogin } from '@/utils'
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
-};
+  name: 'app',
+  components: {},
+  created() {
+    this.initUser()
+  },
+  methods: {
+    initUser() {
+      if (isLogin()) {
+        // load menu
+        let menu = Store.state.user.userMenu
+        if (menu.length === 0) {
+          Store.dispatch('user/loadMenu')
+        }
+      }
+    },
+  },
+}
 </script>
 
-<style>
+<style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
 }
 </style>
