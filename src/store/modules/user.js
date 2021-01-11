@@ -1,4 +1,4 @@
-import { adminMenus } from '@/api/admin'
+import { adminMenus, adminLogin } from '@/api/admin'
 import { CookieUtils, parseMenu } from '@/utils'
 import { router } from '@/router/index'
 
@@ -9,26 +9,28 @@ export default {
   namespaced: true,
   state: {
     userMenu: [],
-    userInfo: { nickname: '', admin_user_id: '' },
+    userInfo: { username: '', userId: '' },
     isLogin: false,
   },
   // 提交数据
   mutations: {
     loginInit(state, data) {
-      console.log('isLogined')
-      state.userInfo.nickname = data.nickname
-      state.userInfo.admin_user_id = data.admin_user_id
-      state.userMenu = data.menus.map(x => x.menu_name)
+      console.log('login init')
+      state.userInfo.username = data.username
+      state.userInfo.userId = data.userId
+      state.userMenu = data.menus.map(x => x.menuName)
     },
-    // 登陆
+    // 登陆成功
     login(state, data) {
-      console.log('login')
-      state.userInfo.nickname = data.nickname
-      state.userInfo.admin_user_id = data.admin_user_id
-      state.userMenu = data.menus.map(x => x.menu_name)
-      CookieUtils.setToken(data.token)
+      console.log('login success')
+      state.userInfo.username = data.username
+      state.userInfo.userId = data.userId
+      CookieUtils.setToken(data.jwt)
       state.isLogin = true
       router.push('/')
+    },
+    menuSuccess(state, data) {
+      state.userMenu = data.menus.map(x => x.menuName)
     },
     // 退出
     loginOut(state) {
@@ -45,20 +47,29 @@ export default {
         adminMenus()
           .then(({ data }) => {
             commit('loginInit', data)
-            resolve(data.menus.map(x => x.menu_name))
+            resolve(data.menus.map(x => x.menuName))
           })
           .catch(() => {
             reject()
           })
       })
     },
+    login({ commit, state }, payload) {
+      const loginPromise = adminLogin(payload)
+      loginPromise.then(res => {
+        commit('login', res.data)
+
+        const menuPromise = adminMenus()
+        menuPromise.then(res => {
+          commit('menuSuccess', res.data)
+        })
+      })
+    },
   },
   // 获取二次处理数据
   getters: {
     sideMenu: state => {
-      // console.log(state.userMenu)
       const ret = parseMenu(state.userMenu)
-      // console.log(ret)
       return ret
     },
   },

@@ -23,7 +23,7 @@ const messages = {
 }
 
 const i18n = new VueI18n({
-  // uitls 优先引用i18n 导致封装的获取语言方法不可用
+  // Utils 优先引用i18n 导致封装的获取语言方法不可用
   locale: window.localStorage.getItem('language') || 'zh-CN',
   messages,
 })

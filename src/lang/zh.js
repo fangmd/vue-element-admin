@@ -11,6 +11,13 @@ export default {
   Router: {
     Login: '登录',
     Home: '首页',
+    BlogManage: '博客管理',
+    TagManage: '标签管理',
+    CategoryManage: '分类管理',
+    ArticleManage: '文章管理',
+    SystemManage: '系统管理',
+    RoleManage: '角色管理',
+    UserManage: '用户管理',
   },
   Table: {},
   Form: {},

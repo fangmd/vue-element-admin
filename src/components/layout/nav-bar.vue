@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     userName() {
-      return store.state.user.userInfo.nickname
+      return store.state.user.userInfo.username
     },
   },
   methods: {

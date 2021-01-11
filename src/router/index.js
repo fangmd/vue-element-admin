@@ -50,26 +50,73 @@ const routes = [
       title: 'Login',
     },
   },
-  // {
-  //   path: '/member',
-  //   name: 'MemberManage',
-  //   component: BaseLayout,
-  //   meta: {
-  //     title: 'MemberManage',
-  //     icon: 'el-icon-info',
-  //   },
-  //   children: [
-  //     {
-  //       path: 'memberinfo',
-  //       name: 'MemberInfo',
-  //       meta: {
-  //         title: 'MemberInfo',
-  //         icon: 'el-icon-info',
-  //       },
-  //       component: () => import(/* webpackChunkName:"member" */ '@/views/member/member-info.vue'),
-  //     },
-  //   ],
-  // },
+  {
+    path: '/blog',
+    name: 'BlogManage',
+    component: BaseLayout,
+    meta: {
+      title: 'BlogManage',
+      icon: 'el-icon-info',
+    },
+    children: [
+      {
+        path: 'tag-manage',
+        name: 'TagManage',
+        meta: {
+          title: 'TagManage',
+          icon: 'el-icon-info',
+        },
+        component: () => import(/* webpackChunkName:"blog" */ '@/views/blog/tag-manage.vue'),
+      },
+      {
+        path: 'category-manage',
+        name: 'CategoryManage',
+        meta: {
+          title: 'CategoryManage',
+          icon: 'el-icon-info',
+        },
+        component: () => import(/* webpackChunkName:"blog" */ '@/views/blog/category-manage.vue'),
+      },
+      {
+        path: 'article-manage',
+        name: 'ArticleManage',
+        meta: {
+          title: 'ArticleManage',
+          icon: 'el-icon-info',
+        },
+        component: () => import(/* webpackChunkName:"blog" */ '@/views/blog/article-manage.vue'),
+      },
+    ],
+  },
+  {
+    path: '/system',
+    name: 'SystemManage',
+    component: BaseLayout,
+    meta: {
+      title: 'SystemManage',
+      icon: 'el-icon-info',
+    },
+    children: [
+      {
+        path: 'role-manage',
+        name: 'RoleManage',
+        meta: {
+          title: 'RoleManage',
+          icon: 'el-icon-info',
+        },
+        component: () => import(/* webpackChunkName:"system" */ '@/views/system/role-manage.vue'),
+      },
+      {
+        path: 'user-manage',
+        name: 'UserManage',
+        meta: {
+          title: 'UserManage',
+          icon: 'el-icon-info',
+        },
+        component: () => import(/* webpackChunkName:"system" */ '@/views/system/user-manage.vue'),
+      },
+    ],
+  },
 ]
 
 const router = new VueRouter({

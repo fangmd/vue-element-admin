@@ -68,7 +68,8 @@ instance.interceptors.response.use(
   // 请求成功
   res => {
     if (res.status === 200) {
-      if (res.data.code && res.data.code !== 100200) {
+      // return Promise.resolve(res.data)
+      if (res.data.code && res.data.code !== 2000) {
         Message({
           message: res.data.msg,
           type: 'error',

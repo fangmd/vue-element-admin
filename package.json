@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "centrifuge": "^2.6.4",
     "core-js": "^3.6.5",
     "dayjs": "^1.8.36",
     "echarts": "^4.9.0",

@@ -10,10 +10,6 @@
     >
       <div class="title-container">
         <h3 class="title-logo">XXX</h3>
-        <!-- <h3 class="title">{{ $t('AdminLogin') }}</h3> -->
-        <!-- <div class="lang-select-area">
-          <LanguageSelect />
-        </div>-->
       </div>
       <el-form-item prop="username">
         <el-input
@@ -43,7 +39,7 @@
       <el-button
         :loading="loading"
         @click.native.prevent="handleLogin"
-        style="width:100%;margin-bottom:30px;"
+        style="width: 100%; margin-bottom: 30px"
         type="primary"
         >{{ $t('Login') }}</el-button
       >
@@ -52,17 +48,12 @@
 </template>
 
 <script>
-// import LanguageSelect from '@/components/layout/language-Select'
-
+import Store from '@/store'
 import { adminLogin } from '@/api/admin'
-import store from '@/store'
 
 // 登录页面
 export default {
   name: 'Login',
-  components: {
-    // LanguageSelect,
-  },
   data() {
     return {
       loginForm: {
@@ -112,12 +103,12 @@ export default {
       this.$refs['loginForm'].validate(valid => {
         if (valid) {
           this.loading = true
-          adminLogin(this.loginForm)
+          Store.dispatch('user/login', this.loginForm)
             .then(data => {
               this.loading = false
-              store.commit('user/login', data.data)
             })
-            .catch(() => {
+            .catch(e => {
+              console.log(e)
               this.loading = false
             })
         } else {

@@ -1,6 +1,6 @@
 import Pagination from '@/components/pagination'
 import SearchInput from '@/components/search-input'
-import FilterType from '@/components/filter-type'
+// import FilterType from '@/components/filter-type'
 
 // 表格页面基础类
 // 子类需要实现 Methods: getDatas
@@ -8,7 +8,7 @@ export default {
   components: {
     Pagination,
     SearchInput,
-    FilterType,
+    // FilterType,
   },
   data() {
     return {
