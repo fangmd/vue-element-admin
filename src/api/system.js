@@ -26,7 +26,7 @@ export const roleMenus = data => {
 
 // 用户管理/管理员管理
 export const managerList = data => {
-  return axios.get('/api/admin/manager_list', { params: data })
+  return axios.get('/api/admin/managers', { params: data })
 }
 export const deleteManager = data => {
   return axios.delete('/api/admin/manager', { params: data })
@@ -35,7 +35,7 @@ export const editManager = data => {
   return axios.put('/api/admin/manager', data)
 }
 export const getManager = data => {
-  return axios.put('/api/admin/manager', data)
+  return axios.get('/api/admin/manager', { params: data })
 }
 export const addManager = data => {
   return axios.post('/api/admin/manager', data)

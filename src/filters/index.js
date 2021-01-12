@@ -1,3 +1,5 @@
 import { timeFormate, timeFormateYMD, parseTime } from './time'
 
-export { timeFormate, timeFormateYMD, parseTime }
+import { parseStatus } from './msg'
+
+export { timeFormate, timeFormateYMD, parseTime, parseStatus }
